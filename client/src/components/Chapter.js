@@ -15,7 +15,7 @@ class Chapter extends Component {
       `/manga/${manga}/chapter/${chapter}`,
       {method:"POST"}
       );
-      const {images} = await res.json();
+      const images = await res.json();
       this.setState({images});
   }
 
