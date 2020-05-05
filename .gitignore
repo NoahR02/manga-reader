@@ -1,0 +1,5 @@
+client/.cache
+client/dist
+server/.env
+server/node_modules
+client/node_modules

@@ -24,10 +24,17 @@ app.post("/manga/query/:query", async (req, res) => {
 app.post("/manga/:mangaID", async (req, res) => {
   const {mangaID} = req.params;
   const mangaInfo = await fetch(`https://www.mangaeden.com/api/manga/${mangaID}`);
-  const {chapters, title, released, status, hits:views,chapters_len: chapterLength, categories:genres } = await mangaInfo.json();
+  const {chapters, title, image: imageURL, description, released, status, hits:views,chapters_len: chapterLength, categories:genres } = await mangaInfo.json();
   return res.json({
-    chapters, title, released, status, views, chapterLength, genres
+    chapters, title, released, status, views, chapterLength, genres, imageURL, description
   });
+});
+
+app.post("/manga/:mangaID/chapter/:chapterID", async (req, res) => {
+  const {chapterID} = req.params;
+  const mangaInfo = await fetch(`https://www.mangaeden.com/api/chapter/${chapterID}`);
+  const {images} = await mangaInfo.json();
+  return res.json({ images });
 });
 
 app.listen(
