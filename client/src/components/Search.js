@@ -44,7 +44,7 @@ class Search extends React.Component {
       <div id="search" onClick={(e) => {
         if(e.target.id !== ("inputManga" || "searchManga") ) this.setState({open:false})
       }}>
-        <input id="inputManga" type="text" onClick={()=> this.setState({open:true})}  onChange={(e) => this.queryOnChange(e)} />
+        <input placeholder="Search Manga..." autoComplete="off" id="inputManga" type="text" onClick={()=> this.setState({open:true})}  onChange={(e) => this.queryOnChange(e)} />
         <ul id="searchManga" style={this.state.open ? {display:"flex"} : {display:"none"}}>
         {this.renderSearch()}
         </ul>

@@ -1,0 +1,28 @@
+#nav {
+  width: 100vw;
+  background: #1D1D1D;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2em;
+}
+
+#nav #navHeading {
+  margin-right: auto;
+  font-size: 1.3em;
+}
+
+#nav #navHeading a {
+  color: white;
+}
+
+#nav #navLinks a {
+  color: white;
+  margin-right: 1em;
+  font-size: 1.3em;
+}
+
+#nav #navLinks a:last-child {
+  margin-right: 0;
+}

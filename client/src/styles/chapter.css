@@ -1,0 +1,44 @@
+#chapter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1d1d1d;
+  padding: 10vh 0;
+}
+
+#chapter #toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5vh;
+  width: 70vw;
+}
+
+#toolbar select {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#chapter #toolbar a {
+  color: white;
+}
+
+#chapter img {
+  width: 50vw;
+  height: auto;
+  overflow: auto;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1000px) {
+  #chapter img {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #chapter img {
+    width: 100vw;
+  }
+}

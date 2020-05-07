@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import "../styles/mangainfo.css";
 
 class MangaInfo extends React.Component {
 
@@ -25,27 +26,32 @@ class MangaInfo extends React.Component {
   render() {
     return (
       <main id="mangaInfo">
+        <div id="mangaSummaryContainer">
+          <img src={`https://cdn.mangaeden.com/mangasimg/${this.state.imageURL}`} />
+          <p id="mangaSummary"> <h3>{this.state.title}</h3>{this.state.description}</p>
+        </div>
         <br />
-        {this.state.title}
-        <br />
-        {this.state.description}
-        <br />
-        <img src={`https://cdn.mangaeden.com/mangasimg/${this.state.imageURL}`} />
-        <br />
+
+        <section id="chapters">
+          <h3 id="chaptersHeading">Chapters:</h3>
+          {this.state.chapters.map( (m) => {
+            return <Link to={`/manga/${this.props.match.params.manga}/chapter/${m[3]}`}>Chapter {m[0]} {m[2]} <br/></Link>
+           })}
+        </section>
         
+        {/* 
         {this.state.released}
         <br />
-        {this.state.status}
+        Status : {this.state.status}
         <br />
         {this.state.views}
         <br />
         {this.state.chapterLength}
         <br />
         {this.state.genres[0]}
-        {this.state.chapters.map( (m) => {
-         return <Link to={`/manga/${this.props.match.params.manga}/chapter/${m[3]}`}>{m[2]} <br/></Link>
-        })}
+        
         <br />
+        */}
       </main>
     )
   }

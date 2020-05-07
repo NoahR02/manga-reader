@@ -66,8 +66,12 @@ app.post("/manga/:mangaID", cacheManga, async (req, res) => {
   const {mangaID} = req.params;
   const mangaInfo = await fetch(`https://www.mangaeden.com/api/manga/${mangaID}`);
   const {chapters, title, image: imageURL, description, released, status, hits:views,chapters_len: chapterLength, categories:genres } = await mangaInfo.json();
-  const manga = {chapters, title, released, status, views, chapterLength, genres, imageURL, description} ;
-  client.setex(mangaID, 3600, JSON.stringify(manga));
+  const manga = {chapters, title, released, status, views, chapterLength, genres, imageURL, description};
+  if(status === 2) {
+    client.set(mangaID, JSON.stringify(manga));
+  } else {
+    client.setex(mangaID, 3600, JSON.stringify(manga));
+  }
   return res.json(manga);
 });
 
@@ -75,7 +79,7 @@ app.post("/manga/:mangaID/chapter/:chapterID", cacheChapter, async (req, res) =>
   const {chapterID} = req.params;
   const mangaInfo = await fetch(`https://www.mangaeden.com/api/chapter/${chapterID}`);
   const {images} = await mangaInfo.json();
-  client.setex(chapterID, 3600, JSON.stringify(images));
+  client.set(chapterID, JSON.stringify(images));
   return res.json(images);
 });
 
